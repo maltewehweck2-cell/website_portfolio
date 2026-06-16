@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio - Kunst & Medien</title>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- GRUNDGERÜST --- */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #EAEAEA; 
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    canvas {
+      display: block;
+      position: fixed; 
+      top: 0;
+      left: 0;
+      z-index: -1; 
+    }
+    
+    /* --- HERO SECTION --- */
+    .hero {
+      height: 100vh; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center;     
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      pointer-events: none; 
+    }
+    
+    .hero h1 {
+      font-weight: 700; 
+      letter-spacing: 0.05em; 
+      color: #000000; 
+      font-size: 4.5vw; 
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    
+    .hero p {
+      font-weight: 400; 
+      color: #000000; 
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      margin: 0;
+      text-transform: uppercase;
+    } 
+
+     /* --- PORTFOLIO BEREICH --- */
+    .portfolio-grid {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 0 5vw 20vh 5vw; 
+    }
+
+    .project {
+      margin-bottom: 25vh; 
+      width: 100%; 
+    }
+
+    /* Text-Bereich */
+    .project-info {
+      margin-bottom: 3rem;
+      width: 100%; 
+      max-width: 100%; 
+    }
+
+    .project-info h2 {
+      font-weight: 700; 
+      font-size: 2.8rem; 
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+      color: #000000; 
+      text-transform: uppercase;
+    }
+
+    .project-info p {
+      font-weight: 500; 
+      font-size: 1.3rem; 
+      line-height: 1.5;
+      color: #000000; 
+      text-align: justify; 
+      hyphens: auto; 
+      margin: 0;
+      width: 100%;
+    }
+
+    /* Medien-Bereich */
+    .media-container {
+      width: 100%;
+    }
+
+    .media-container img,
+    .media-container video,
+    .media-container iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      border: none;
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.05); 
+    }
+
+    /* Asymmetrisches Layout */
+    .project.align-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; 
+    }
+    
+    .project.align-right .project-info {
+      text-align: right; 
+    }
+
+    /* Zentriertes Layout */
+    .project.align-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+    }
+
+    .project.align-center .project-info {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+   <header class="hero">
+    <h1>Malte Valentin Wehweck</h1>
+    <p>Kunst & Medien — Portfolio 2026</p>
+  </header>
+
+  <main class="portfolio-grid">
+    
+    <article class="project">
+      <div class="project-info">
+        <h2>Projekt 01</h2>
+        <p>Die Typografie ist nun komplett in Schwarz gehalten. Der Blocksatz füllt den Raum gleichmäßig aus, aber die letzte Zeile bricht ganz natürlich nach links ab, ohne Lücken zu reißen. Das wirkt deutlich organischer und lesbarer.</p>
+      </div>
+      <div class="media-container">
+       <iframe 
+          src="https://www.youtube.com/embed/DfSi-UJ-V_g" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </article>
+
+    <article class="project align-center">
+      <div class="project-info">
+        <h2>Projekt 02</h2>
+        <p>Visuelle Störgeräusche und Signalverarbeitung. Der schwarz-weiße Look lässt das Interface in den Hintergrund treten und fokussiert das Auge voll und ganz auf das eingebettete Video.</p>
+      </div>
+      <div class="media-container">
+        <iframe 
+          src="https://player.vimeo.com/video/1198519946?color=FF0015&title=0&byline=0&portrait=0" 
+          allow="autoplay; fullscreen; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </article>
+
+    <article class="project align-right">
+      <div class="project-info">
+        <h2>Projekt 03</h2>
+        <p>Ein extrem stringentes, redaktionelles Layout. Die Linien des generativen Systems im Hintergrund sind ebenfalls schwarz, ziehen sich wie feine Bleistiftstriche über den Bildschirm und bilden einen Kontrast zum roten Maus-Effekt.</p>
+      </div>
+      <div class="media-container">
+        <img src="https://picsum.photos/1000/600?random=3" alt="Projekt 3">
+      </div>
+    </article>
+
+  </main>
+
+  <script>
+    let particles = [];
+    const numParticles = 80; 
+    const connectDistance = 150;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      for (let i = 0; i < numParticles; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function draw() {
+      // Hintergrund Lichtgrau
+      background(234, 234, 234); 
+      
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].show();
+        
+        for (let j = i + 1; j < particles.length; j++) {
+          let d = dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+          
+          if (d < connectDistance) {
+            let alpha = map(d, 0, connectDistance, 150, 0);
+            // Schwarze Linien zwischen den Partikeln
+            stroke(0, 0, 0, alpha);
+            strokeWeight(1);
+            line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+          }
+        }
+        
+        // Interaktion mit der Maus
+        let mouseD = dist(particles[i].x, particles[i].y, mouseX, mouseY);
+        if (mouseD < connectDistance + 50) { 
+          let mouseAlpha = map(mouseD, 0, connectDistance + 50, 200, 0);
+          // Knallrote Linien für die Maus-Interaktion als Akzent
+          stroke(255, 0, 21, mouseAlpha); 
+          strokeWeight(1.2); 
+          line(particles[i].x, particles[i].y, mouseX, mouseY);
+        }
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+
+    class Particle {
+      constructor() {
+        this.x = random(width);
+        this.y = random(height);
+        this.vx = random(-0.3, 0.3); 
+        this.vy = random(-0.3, 0.3);
+        this.size = random(2, 4);
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x <= 0 || this.x >= width) this.vx *= -1;
+        if (this.y <= 0 || this.y >= height) this.vy *= -1;
+      }
+
+      show() {
+        noStroke();
+        // Schwarze Partikel
+        fill(0, 0, 0, 200);
+        ellipse(this.x, this.y, this.size);
+      }
+    }
+  </script>
+</body>
+</html>
