@@ -1,269 +1,220 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio - Kunst & Medien</title>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* --- GRUNDGERÜST --- */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #EAEAEA; 
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    
-    canvas {
-      display: block;
-      position: fixed; 
-      top: 0;
-      left: 0;
-      z-index: -1; 
-    }
-    
-    /* --- HERO SECTION --- */
-    .hero {
-      height: 100vh; 
-      display: flex;
-      flex-direction: column;
-      justify-content: center; 
-      align-items: center;     
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      pointer-events: none; 
-    }
-    
-    .hero h1 {
-      font-weight: 700; 
-      letter-spacing: 0.05em; 
-      color: #000000; 
-      font-size: 4.5vw; 
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-    
-    .hero p {
-      font-weight: 400; 
-      color: #000000; 
-      font-size: 1.2rem;
-      letter-spacing: 0.1em;
-      margin: 0;
-      text-transform: uppercase;
-    } 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index of /portfolio</title>
+    <style>
+        /* --- GRUNDRAUSCHEN --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-     /* --- PORTFOLIO BEREICH --- */
-    .portfolio-grid {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px; 
-      margin: 0 auto; 
-      padding: 0 5vw 20vh 5vw; 
-    }
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 3rem 2rem;
+            max-width: 900px; /* Begrenzt die Breite, damit Texte gut lesbar bleiben */
+            margin: 0 auto;
+        }
 
-    .project {
-      margin-bottom: 25vh; 
-      width: 100%; 
-    }
+        /* --- TYPOGRAFIE & ABSTÄNDE --- */
+        h1 {
+            font-size: 1rem;
+            font-weight: normal;
+            border-bottom: 1px solid #000;
+            padding-bottom: 1rem;
+            margin-bottom: 4rem;
+        }
 
-    /* Text-Bereich */
-    .project-info {
-      margin-bottom: 3rem;
-      width: 100%; 
-      max-width: 100%; 
-    }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 5rem;
+            margin-bottom: 1.5rem;
+            background-color: #000;
+            color: #fff;
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+        }
 
-    .project-info h2 {
-      font-weight: 700; 
-      font-size: 2.8rem; 
-      margin-bottom: 1rem;
-      letter-spacing: 0.02em;
-      color: #000000; 
-      text-transform: uppercase;
-    }
+        h3 {
+            font-size: 1rem;
+            font-weight: normal;
+            text-decoration: underline;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
 
-    .project-info p {
-      font-weight: 500; 
-      font-size: 1.3rem; 
-      line-height: 1.5;
-      color: #000000; 
-      text-align: justify; 
-      hyphens: auto; 
-      margin: 0;
-      width: 100%;
-    }
+        p {
+            margin-bottom: 1.5rem;
+            max-width: 80ch; /* Verhindert, dass Zeilen zu lang und unlesbar werden */
+        }
 
-    /* Medien-Bereich */
-    .media-container {
-      width: 100%;
-    }
+        /* --- VIDEOS --- */
+        .video-container {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
 
-    .media-container img,
-    .media-container video,
-    .media-container iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      display: block;
-      border: none;
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.05); 
-    }
+        iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border: 1px solid #000; /* Harter schwarzer Rahmen für den rohen Look */
+            display: block;
+        }
 
-    /* Asymmetrisches Layout */
-    .project.align-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end; 
-    }
-    
-    .project.align-right .project-info {
-      text-align: right; 
-    }
+        /* --- QUADRATISCHES RASTER FÜR "muede" --- */
+        .square-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+            gap: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
 
-    /* Zentriertes Layout */
-    .project.align-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center; 
-    }
+        .square-grid .grid-item {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .project.align-center .project-info {
-      text-align: center;
-    }
-  </style>
+        .square-grid iframe {
+            aspect-ratio: 1 / 1; /* Erzwingt ein Quadrat */
+            object-fit: cover;
+        }
+
+        .caption {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+
+        /* --- LISTEN FÜR FILM-PROJEKTE --- */
+        ul {
+            list-style-type: square;
+            margin-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- MOBILE ANPASSUNG --- */
+        @media (max-width: 700px) {
+            .square-grid {
+                grid-template-columns: 1fr; /* Auf dem Handy untereinander */
+            }
+            .square-grid iframe {
+                aspect-ratio: 16 / 9; /* Auf dem Handy wieder normales Format */
+            }
+        }
+    </style>
 </head>
 <body>
 
-   <header class="hero">
-    <h1>Malte Valentin Wehweck</h1>
-    <p>Kunst & Medien — Portfolio 2026</p>
-  </header>
+    <h1>Index of /root/portfolio_2026</h1>
 
-  <main class="portfolio-grid">
-    
-    <article class="project">
-      <div class="project-info">
-        <h2>Projekt 01</h2>
-        <p>Die Typografie ist nun komplett in Schwarz gehalten. Der Blocksatz füllt den Raum gleichmäßig aus, aber die letzte Zeile bricht ganz natürlich nach links ab, ohne Lücken zu reißen. Das wirkt deutlich organischer und lesbarer.</p>
-      </div>
-      <div class="media-container">
-        <iframe 
-         width="560" 
-         height="315" 
-         src="https://www.youtube.com/embed/DfSi-UJ-V_g" 
-         title="YouTube video player" 
-         frameborder="0" 
-         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-         allowfullscreen>
-        </iframe>
-      </div>
-    </article>
-
-
-
-    <article class="project align-center">
-      <div class="project-info">
-        <h2>Projekt 02</h2>
-        <p>Visuelle Störgeräusche und Signalverarbeitung. Der schwarz-weiße Look lässt das Interface in den Hintergrund treten und fokussiert das Auge voll und ganz auf das eingebettete Video.</p>
-      </div>
-      <div class="media-container">
-        <iframe 
-          src="https://player.vimeo.com/video/1198519946?color=FF0015&title=0&byline=0&portrait=0" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </article>
-
-    <article class="project align-right">
-      <div class="project-info">
-        <h2>Projekt 03</h2>
-        <p>Ein extrem stringentes, redaktionelles Layout. Die Linien des generativen Systems im Hintergrund sind ebenfalls schwarz, ziehen sich wie feine Bleistiftstriche über den Bildschirm und bilden einen Kontrast zum roten Maus-Effekt.</p>
-      </div>
-      <div class="media-container">
-        <img src="https://picsum.photos/1000/600?random=3" alt="Projekt 3">
-      </div>
-    </article>
-
-  </main>
-
-  <script>
-    let particles = [];
-    const numParticles = 80; 
-    const connectDistance = 150;
-
-    function setup() {
-      createCanvas(windowWidth, windowHeight);
-      for (let i = 0; i < numParticles; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function draw() {
-      // Hintergrund Lichtgrau
-      background(234, 234, 234); 
-      
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].show();
+    <!-- 01_unauthored -->
+    <section>
+        <h2>./01_unauthored</h2>
         
-        for (let j = i + 1; j < particles.length; j++) {
-          let d = dist(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
-          
-          if (d < connectDistance) {
-            let alpha = map(d, 0, connectDistance, 150, 0);
-            // Schwarze Linien zwischen den Partikeln
-            stroke(0, 0, 0, alpha);
-            strokeWeight(1);
-            line(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
-          }
-        }
+        <div class="video-container">
+            <!-- Aus normalem YouTube-Link wurde ein Embed-Link -->
+            <iframe src="https://www.youtube.com/embed/zo87KSM5UMk" title="01_unauthored" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <p>Vor dem Hintergrund einer theoretischen Auseinandersetzung mit postrukturalistischen und soziologischen Ideen versucht unauthored Grenzen zwischen Performance und Installation, formen und rezipieren verschwimmen zu lassen. Durch die physische Interaktion mit dem unsichtbaren Klangraum entsteht eine unmittelbare Gleichzeitigkeit von Erkunden und Erschaffen, bei der die Kontrolle über das Stück zwischen Publikum, generativen Algorithmen, und Elementen, die nicht in meiner Kontrolle liegen.</p>
         
-        // Interaktion mit der Maus
-        let mouseD = dist(particles[i].x, particles[i].y, mouseX, mouseY);
-        if (mouseD < connectDistance + 50) { 
-          let mouseAlpha = map(mouseD, 0, connectDistance + 50, 200, 0);
-          // Knallrote Linien für die Maus-Interaktion als Akzent
-          stroke(255, 0, 21, mouseAlpha); 
-          strokeWeight(1.2); 
-          line(particles[i].x, particles[i].y, mouseX, mouseY);
-        }
-      }
-    }
+        <p>Das Fundament bildet ein zirkulär aufgestelltes multispeaker Setup über das sprach, klang und musik Fragmente , wie jahrhundertealte Folklore, zufällige Radio streams, generative Synthesizer Sounds, KI-Stimmen und Sound Texturen ausgegeben werden, die über Max for live panning Algorithmen im ambisonic space verteilt werden.</p>
+        
+        <p>Über die Max for live devices chiastic sides und a0 gest, wird das klangliche erleben des Stückes durch die anwesenden selbst gesteuert: Die Kompass-Sensordaten eines in einer Tasche verborgenen Smartphones determinieren drahtlos das fließende Morphing der Signale zwischen den Lautsprechern. Ergänzend können die „Erlebenden“ über einen midi controller und ein Mikrofon, das klangliche erleben zu verändern. Somit hat niemals eine person die alleinige Kontrolle über die Ausgestaltung des Erlebten.</p>
+        
+        <p>Um diesen dezentralen Ansatz auch auf die Dokumentation des Stückes fortzuführen, habe ich mich dazu entschieden: Das 360°-Video übergibt die räumlich-zeitliche Entscheidungsgewalt abermals an die Betrachtenden, die durch ihre eigene Blickführung das Erlebnis final gestalten.</p>
+    </section>
 
-    function windowResized() {
-      resizeCanvas(windowWidth, windowHeight);
-    }
+    <!-- 02_trap_fauna -->
+    <section>
+        <h2>./02_trap_fauna</h2>
+        
+        <div class="video-container">
+            <!-- Vimeo Embed -->
+            <iframe src="https://player.vimeo.com/video/1198519946" title="02_trap_fauna" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
-    class Particle {
-      constructor() {
-        this.x = random(width);
-        this.y = random(height);
-        this.vx = random(-0.3, 0.3); 
-        this.vy = random(-0.3, 0.3);
-        this.size = random(2, 4);
-      }
+        <!-- Bei Gedicht/Rhythmus-artigen Texten macht man Umbrüche mit <br> -->
+        <p>
+            The Sound Art installation TRAPPED BUSHES blends nature with urban pop culture.<br>
+            Hidden speakers in olive bushes play ad-libs by the rappers Playboi Carti and Money Boy.<br>
+            They are displayed in random orders without looping.<br>
+            Creating an endless dialogue.<br>
+            Ad-libs are improvised vocal shouts used as a rhythmic counterpart to the lead vocals.<br>
+            Gaining massive popularity within trap music.<br>
+            I came up with the installation, because the character of the ad-lips reminded me of animal communication.<br>
+            Like chirping birds sitting in trees.<br>
+            The installation interrogates the ways in which sonic fragments construct meaning when put into a different context.<br>
+            Turning the experience of hearing rap ad-libs from a bush into something both surreal and humorous.
+        </p>
+    </section>
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
+    <!-- 03_muede -->
+    <section>
+        <h2>./03_muede</h2>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/foGYCbcM4Ww" title="muede main video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
-        if (this.x <= 0 || this.x >= width) this.vx *= -1;
-        if (this.y <= 0 || this.y >= height) this.vy *= -1;
-      }
+        <p>„muede“ ist ein pop-genre-fluid Projekt, dass ich 2023 gestartet habe. Verbinde emotionale Lyrics mit synthetischer Stimme und modernen und experimentellen Produktionselementen.</p>
 
-      show() {
-        noStroke();
-        // Schwarze Partikel
-        fill(0, 0, 0, 200);
-        ellipse(this.x, this.y, this.size);
-      }
-    }
-  </script>
+        <!-- Quadratisches Raster für die 3 Songs -->
+        <div class="square-grid">
+            <div class="grid-item">
+                <iframe src="https://www.youtube.com/embed/a91IkcBJLbM" title="asche 2025" allowfullscreen></iframe>
+                <div class="caption">asche (2025)</div>
+            </div>
+            <div class="grid-item">
+                <iframe src="https://www.youtube.com/embed/wdRmLrJc164" title="bin wie eine elfbar 2025" allowfullscreen></iframe>
+                <div class="caption">bin wie eine elfbar (2025)</div>
+            </div>
+            <div class="grid-item">
+                <iframe src="https://www.youtube.com/embed/GJ6S587mXe4" title="100 000" allowfullscreen></iframe>
+                <div class="caption">100 000</div>
+            </div>
+        </div>
+        
+        <!-- Falls du noch Video Snippets hast, kannst du sie hier einfügen -->
+        <p class="caption">[Video Snippets: directory empty]</p>
+    </section>
+
+    <!-- 05_electroacoustics -->
+    <section>
+        <h2>./05_electroacoustics</h2>
+        <p class="caption">[directory empty / work in progress]</p>
+    </section>
+
+    <!-- 05_film_projects_as_production_sound -->
+    <!-- (Hinweis: Du hattest zweimal die 05 in deiner Liste, ich habe das exakt so übernommen) -->
+    <section>
+        <h2>./05_film_projects_as_production_sound</h2>
+
+        <h3>DOKUMENTAR</h3>
+        <ul>
+            <li>LICHTER DER STRASSE / Anna Friedrich / Rosenpictures / 2024 / 86’ / DOK Leipzig & Achtung Berlin / 14 Drehtage</li>
+            <li>EINMAL RAUBKUNST UND ZURÜCK / Frank Vorpahl / ZDF / 2023 / 45’ / 18 Drehtage</li>
+        </ul>
+
+        <h3>FICTIONAL</h3>
+        <ul>
+            <li>Silvesternacht / 2026 / Yannick Entremont / Filmuniversität Babelsberg KONRAD WOLF / 3’ / 1 Drehtag</li>
+            <li>ΣΤΑ ΠΑΛΑΤΙΑ ΜΑΣ / Leonie Englert / 2025 / 5’ / 1 Drehtag</li>
+        </ul>
+    </section>
+
 </body>
 </html>
