@@ -1,219 +1,140 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of /portfolio</title>
+    <title>/malte/valentin/wehweck/portfolio</title>
     <style>
-        /* --- GRUNDRAUSCHEN --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 13px; }
         body {
             background-color: #ffffff;
             color: #000000;
             font-family: "Courier New", Courier, monospace;
-            font-size: 16px;
             line-height: 1.5;
             padding: 3rem 2rem;
-            max-width: 900px; /* Begrenzt die Breite, damit Texte gut lesbar bleiben */
+            max-width: 900px;
             margin: 0 auto;
         }
+        h1 { font-size: 1rem; font-weight: normal; border-bottom: 1px solid #000; padding-bottom: 1rem; margin-bottom: 4rem; }
+        h2 { font-size: 1.2rem; font-weight: bold; margin-top: 5rem; margin-bottom: 1.5rem; background-color: #000; color: #fff; display: inline-block; padding: 0.2rem 0.5rem; }
+        h3 { font-size: 1rem; font-weight: normal; text-decoration: underline; margin-top: 2.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+        a { color: #0000EE; text-decoration: underline; word-break: break-all; }
+        a:visited { color: #551A8B; }
 
-        /* --- TYPOGRAFIE & ABSTÄNDE --- */
-        h1 {
-            font-size: 1rem;
-            font-weight: normal;
-            border-bottom: 1px solid #000;
-            padding-bottom: 1rem;
-            margin-bottom: 4rem;
-        }
+        /* Zitat & Call-out Styling */
+        .quote-block { margin: 2rem 2rem 2rem 2rem; padding-left: 1rem; border-left: 2px solid #000; font-size: 1.2rem; font-weight: bold; }
+        .quote-source { font-size: 0.8rem; font-style: italic; margin-bottom: 2rem; }
+        .highlight-block { margin: 2rem 2rem 2rem 2rem; padding: 1rem; border: 1px solid #000; font-weight: bold; font-size: 1.1rem; }
 
-        h2 {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 5rem;
-            margin-bottom: 1.5rem;
-            background-color: #000;
-            color: #fff;
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-        }
-
-        h3 {
-            font-size: 1rem;
-            font-weight: normal;
-            text-decoration: underline;
-            margin-top: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            max-width: 80ch; /* Verhindert, dass Zeilen zu lang und unlesbar werden */
-        }
-
-        /* --- VIDEOS --- */
-        .video-container {
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-
-        iframe {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border: 1px solid #000; /* Harter schwarzer Rahmen für den rohen Look */
-            display: block;
-        }
-
-        /* --- QUADRATISCHES RASTER FÜR "muede" --- */
-        .square-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
-            gap: 1rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .square-grid .grid-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .square-grid iframe {
-            aspect-ratio: 1 / 1; /* Erzwingt ein Quadrat */
-            object-fit: cover;
-        }
-
-        .caption {
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            color: #666;
-        }
-
-        /* --- LISTEN FÜR FILM-PROJEKTE --- */
-        ul {
-            list-style-type: square;
-            margin-left: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- MOBILE ANPASSUNG --- */
-        @media (max-width: 700px) {
-            .square-grid {
-                grid-template-columns: 1fr; /* Auf dem Handy untereinander */
-            }
-            .square-grid iframe {
-                aspect-ratio: 16 / 9; /* Auf dem Handy wieder normales Format */
-            }
-        }
+        .small-italic { font-size: 0.85rem; font-style: italic; color: #333; }
+        .film-title { margin-bottom: 0.5rem; display: block; }
+        .media-container { width: 100%; margin-bottom: 1.5rem; margin-top: 2rem; }
+        iframe { width: 100%; aspect-ratio: 16 / 9; border: 1px solid #000; display: block; }
+        audio { width: 100%; margin-bottom: 1.5rem; border: 1px solid #000; }
+        .square-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+        .grid-item { display: flex; flex-direction: column; }
+        .square-grid iframe { aspect-ratio: 1 / 1; object-fit: cover; }
+        .caption { font-size: 0.85rem; margin-top: 0.5rem; color: #666; }
+        ul { list-style-type: square; margin-left: 1.5rem; margin-bottom: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        .work-list-item { margin-bottom: 1.5rem; }
+        .work-list-title { font-weight: bold; }
+        @media (max-width: 700px) { .square-grid { grid-template-columns: 1fr; } .square-grid iframe { aspect-ratio: 16 / 9; } }
     </style>
 </head>
 <body>
 
-    <h1>Index of /root/portfolio_2026</h1>
+    <h1>/malte/valentin/wehweck/portfolio</h1>
 
-    <!-- 01_unauthored -->
     <section>
-        <h2>./01_unauthored</h2>
-        
-        <div class="video-container">
-            <!-- Aus normalem YouTube-Link wurde ein Embed-Link -->
-            <iframe src="https://www.youtube.com/embed/zo87KSM5UMk" title="01_unauthored" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2>./01/unauthored_2026</h2>
+        <div class="quote-block">
+            „Thus is revealed the total existence of writing: a text is made of multiple writings, drawn from many cultures and entering into mutual relations of dialogue, parody, contestation, but [one] place where this multiplicity is focused and that place is the reader, not, as was hitherto said, the author.“ (Barthes, 1977, p. 148)
+        </div>
+        <p class="quote-source">Barthes, R. (1977). The Death of the Author (1968) (Trans: S. Heath). In Image Music Text (pp. 142-148). Fontana Press.</p>
+
+        <div class="media-container">
+            <iframe src="https://player.vimeo.com/video/1202791049" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <p>Vor dem Hintergrund einer theoretischen Auseinandersetzung mit postrukturalistischen und soziologischen Ideen versucht unauthored Grenzen zwischen Performance und Installation, formen und rezipieren verschwimmen zu lassen. Durch die physische Interaktion mit dem unsichtbaren Klangraum entsteht eine unmittelbare Gleichzeitigkeit von Erkunden und Erschaffen, bei der die Kontrolle über das Stück zwischen Publikum, generativen Algorithmen, und Elementen, die nicht in meiner Kontrolle liegen.</p>
-        
-        <p>Das Fundament bildet ein zirkulär aufgestelltes multispeaker Setup über das sprach, klang und musik Fragmente , wie jahrhundertealte Folklore, zufällige Radio streams, generative Synthesizer Sounds, KI-Stimmen und Sound Texturen ausgegeben werden, die über Max for live panning Algorithmen im ambisonic space verteilt werden.</p>
-        
-        <p>Über die Max for live devices chiastic sides und a0 gest, wird das klangliche erleben des Stückes durch die anwesenden selbst gesteuert: Die Kompass-Sensordaten eines in einer Tasche verborgenen Smartphones determinieren drahtlos das fließende Morphing der Signale zwischen den Lautsprechern. Ergänzend können die „Erlebenden“ über einen midi controller und ein Mikrofon, das klangliche erleben zu verändern. Somit hat niemals eine person die alleinige Kontrolle über die Ausgestaltung des Erlebten.</p>
-        
-        <p>Um diesen dezentralen Ansatz auch auf die Dokumentation des Stückes fortzuführen, habe ich mich dazu entschieden: Das 360°-Video übergibt die räumlich-zeitliche Entscheidungsgewalt abermals an die Betrachtenden, die durch ihre eigene Blickführung das Erlebnis final gestalten.</p>
+        <p>unauthored explores the distribution of authorship, originality, and agency. Against the backdrop of a theoretical engagement with post-structuralist and sociological ideas, the work attempts to blur the boundaries between performance and installation, as well as between shaping and perceiving. True to the credo of the "birth of the reader" by Roland Barthes, the aim is not to decipher a meaning burned into the work, but to generate it during the experience itself. Through physical interaction with the invisible sound space, an immediate simultaneity of exploring and creating emerges, in which control over the piece is distributed among the audience, generative algorithms, and the environment.</p>
+        <p>The foundation is a circular multi-speaker setup. Through this system, various voice, sound, and music fragments are output and distributed in the sonic space via Max for Live panning algorithms. These fragments consist of diverse, interwoven elements: the centuries-old folk melody of "Danny Boy," for instance, is recontextualized as a surreal duet between an AI-generated voice model of Juice WRLD and the original vocal recording by Sinéad O'Connor. The piece also incorporates fragments of the so-called "Gen Alpha melody"—a ubiquitous tune that appears in hundreds of contemporary songs, yet whose exact origins remain completely obscured.</p>
+        <div class="highlight-block">All these sonic materials are deliberately chosen because they fundamentally raise questions about provenance, authorship, and originality.</div>
+        <p>Meanwhile, an audio plugin continuously pulls in a random, live radio stream from across the globe, feeding unpredictable real-time broadcasts into the space. These layers merge with frequency-shifted sound textures and generative synthesizer sequences autonomously created using the Max for Live device Sting 2. Using the Max for Live devices chiastic sides and a0 gest, the sonic experience of the piece is controlled by the attendees themselves: the compass sensor data of a smartphone hidden in a bag wirelessly determines the fluid morphing of signals between the loudspeakers. Furthermore, those engaging with the installation can generate pre-programmed chords via a MIDI controller and interact directly through a microphone. Speaking into the microphone subtly distributes the participant's own voice across the speakers via a granular delay. Crucially, this input also triggers an audio track of an AI voice reading from Roland Barthes' essay "The Death of the Author." In his text, Barthes argues that any work is essentially a "tissue of quotations" drawn from innumerable centers of culture. This creates a compelling conceptual parallel to the very nature of deep learning AI, which inherently functions as a complex recombination of vast amounts of existing training data.</p>
+        <div class="highlight-block">Thus, no single person ever has sole control over the design of the experience.</div>
+        <p>Furthermore, because the piece is situated outdoors, uncontrollable environmental noises continuously bleed into the auditory space, acting as an additional, autonomous performer. Ultimately, the convergence of all pre-programmed aspects, random parameters, the decisions of the experiencers, and the unpredictable soundscape of the environment determines what is heard and what is not—what stands out from the mass and what disappears back into it. This continuous interplay creates a singular, ephemeral experience that can never be exactly reproduced.</p>
+        <p>To carry this decentralized approach over into the documentation of the piece, the installation was recorded using a 360-degree camera. Just as the sonic space undergoes permanent alteration and exists in constant movement across multiple layers, the visual documentation aims to reflect this fluidity. By utilizing the 360-degree footage to create a continuously shifting visual space, the documentation transposes the complex, multi-layered auditory spatiality into a dynamic visual experience.</p>
     </section>
 
-    <!-- 02_trap_fauna -->
     <section>
-        <h2>./02_trap_fauna</h2>
-        
-        <div class="video-container">
-            <!-- Vimeo Embed -->
-            <iframe src="https://player.vimeo.com/video/1198519946" title="02_trap_fauna" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <h2>./02/the_trap_fauna_2025</h2>
+        <div class="media-container">
+            <iframe src="https://player.vimeo.com/video/1198519946" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
-
-        <!-- Bei Gedicht/Rhythmus-artigen Texten macht man Umbrüche mit <br> -->
-        <p>
-            The Sound Art installation TRAPPED BUSHES blends nature with urban pop culture.<br>
-            Hidden speakers in olive bushes play ad-libs by the rappers Playboi Carti and Money Boy.<br>
-            They are displayed in random orders without looping.<br>
-            Creating an endless dialogue.<br>
-            Ad-libs are improvised vocal shouts used as a rhythmic counterpart to the lead vocals.<br>
-            Gaining massive popularity within trap music.<br>
-            I came up with the installation, because the character of the ad-lips reminded me of animal communication.<br>
-            Like chirping birds sitting in trees.<br>
-            The installation interrogates the ways in which sonic fragments construct meaning when put into a different context.<br>
-            Turning the experience of hearing rap ad-libs from a bush into something both surreal and humorous.
-        </p>
+        <p>During my studies abroad in Greece, I developed a site-specific sound installation on the university campus. Hidden speakers placed in olive bushes play ad-libs by the rappers Playboi Carti and Money Boy. Ad-libs are improvised vocal shouts typically used as rhythmic counterparts to lead vocals, having gained massive popularity within trap music. I conceived this installation because the short, percussive character of these vocals strongly reminded me of animal communication—much like birds chirping in the trees.</p>
+        <p>Crucially, the work was installed without any signage or context. As an unmarked piece of sound art, it relies entirely on serendipitous encounters and the spatial experience of the campus. The installation interrogates how sonic fragments construct new meaning when displaced from their original cultural habitat into a natural environment. Stumbling upon an endless, disembodied dialogue of trap ad-libs emanating from a bush turns the everyday act of walking across campus into an experience that is both surreal and humorous.</p>
+        <p>Technically, the installation is driven by a Pure Data patch I programmed, running on a Bela board. The program triggers the audio samples in a randomized, non-looping sequence to create a continuously evolving, unpredictable sonic ecosystem. For this purpose, each Bela board was directly connected to a speaker.</p>
     </section>
 
-    <!-- 03_muede -->
     <section>
-        <h2>./03_muede</h2>
-        
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/foGYCbcM4Ww" title="muede main video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2>./03/muede_2023-now</h2>
+        <div class="media-container">
+            <iframe src="https://www.youtube.com/embed/foGYCbcM4Ww" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-
-        <p>„muede“ ist ein pop-genre-fluid Projekt, dass ich 2023 gestartet habe. Verbinde emotionale Lyrics mit synthetischer Stimme und modernen und experimentellen Produktionselementen.</p>
-
-        <!-- Quadratisches Raster für die 3 Songs -->
+        <p class="work-title">sick_summer (2023)</p>
+        <p>"sick summer" is the first song I realized in the context of my artist project muede. The track explores extreme sonic dynamics, ranging from highly reduced, minimalist passages to massive, dense walls of sound. However, these dynamics are not carried by the vocals: the voice remains calm, almost apathetic and sentimental throughout, creating a deliberate contrast to the instrumental harshness. This sonic discrepancy negotiates the relationship between the inner and outer world: the voice functions as the controlled facade of the exterior life, while the volatile, dense instrumental is an attempt to reflect the actual turbulence of the emotional interior.</p>
+        <p>Visually, the music video picks up on imagery from the song and plays with this tension: although the scenery was shot on a sunny beach, the image does not convey any warmth, creating a weird and uncomforting sense of dissonance. To visually explore a surreal, alienated aesthetic, the video heavily utilizes slow motion and rotating camera movements that constantly evoke a feeling of losing one's balance. In post-production, I additionally used datamoshing techniques to generate visual noise and craft a digital glitch aesthetic. Regarding the execution, I was responsible for the entire musical production of the song (aside from the mastering), as well as the visual conception, on-camera performance, final editing, and effects design. The shoot itself was realized on location by an intimate three-person team, where we shared the directing duties. The song has gained over 500.000 streams since its release on Spotify.</p>
         <div class="square-grid">
-            <div class="grid-item">
-                <iframe src="https://www.youtube.com/embed/a91IkcBJLbM" title="asche 2025" allowfullscreen></iframe>
-                <div class="caption">asche (2025)</div>
-            </div>
-            <div class="grid-item">
-                <iframe src="https://www.youtube.com/embed/wdRmLrJc164" title="bin wie eine elfbar 2025" allowfullscreen></iframe>
-                <div class="caption">bin wie eine elfbar (2025)</div>
-            </div>
-            <div class="grid-item">
-                <iframe src="https://www.youtube.com/embed/GJ6S587mXe4" title="100 000" allowfullscreen></iframe>
-                <div class="caption">100 000</div>
-            </div>
+            <div class="grid-item"><iframe src="https://www.youtube.com/embed/a91IkcBJLbM" allowfullscreen></iframe><div class="caption">asche (2025)</div></div>
+            <div class="grid-item"><iframe src="https://www.youtube.com/embed/wdRmLrJc164" allowfullscreen></iframe><div class="caption">bin wie eine elfbar (2025)</div></div>
+            <div class="grid-item"><iframe src="https://www.youtube.com/embed/GJ6S587mXe4" allowfullscreen></iframe><div class="caption">100 000 (2025)</div></div>
         </div>
-        
-        <!-- Falls du noch Video Snippets hast, kannst du sie hier einfügen -->
-        <p class="caption">[Video Snippets: directory empty]</p>
+        <p class="small-italic">The audio production for the pieces "asche", "bin wie eine elfbar", and "100 000" was realized independently, with the exception of the final mastering. For the accompanying visual artworks, I collaborated with two other artists. We experimented with intentionally forcing the panorama feature in Apple Photos to produce glitched images that fragment and distort proportions. I subsequently edited these photographs using Photoshop's AI tools to generate, remove, and morph specific areas, ultimately crafting the final artworks.</p>
+        <p>At the core of muede is the attempt to explore the tension between experimental alienation and pop-cultural accessibility. It's is a genre-fluid pop project in which I appear as an artist persona, offering a projection surface for the audience. The project bundles specific aspects of my musical practice.</p>
+        <p>Conceptually, I often approach songwriting by taking isolated thoughts or emotional fragments, stretching them out musically, and exaggerating them in an attempt to make them tangible and relatable. Sonically, the project negotiates this idea through the hybrid interlocking of diverging codes: elements of drum and bass, hyperpop, and post-punk merge with catchy vocal toplines and more traditional pop structures. Recurring elements in my productions include my highly processed vocals, as well as the deliberate use of digital synthesized sounds. Within muede, I frequently work with emulations of analog synthesizers, such as the Prophet-5 or Korg MS-20.</p>
+        <p>What fascinates me most about this project is the demand for a comprehensive, cross-disciplinary form of expression. It allows and compels me to inextricably link lyrical and musical aspects with visual worlds, be it in moving images, still artworks, or design, as well as live performance, forming a holistic body of work. It was actively translated to the stage during the Ende der Einsamkeit live tour in 2024, featuring performances in Berlin, Munich, Darmstadt, Hamburg, and Cologne. The project's release output now encompasses 13 singles and one EP, funded by Initiative Musik.</p>
     </section>
 
-    <!-- 05_electroacoustics -->
     <section>
-        <h2>./05_electroacoustics</h2>
-        <p class="caption">[directory empty / work in progress]</p>
+        <h2>./04/wir</h2>
+        <div class="media-container">
+            <audio controls src="WEHWECK_95531_WIR.mp3"></audio>
+        </div>
+        <p>In the context of the so called "Zeitenwende," the invocation of a national "we" is currently experiencing a resurgence in Germany, whether in relation to militarization or the acceptance of anti-worker legislative changes aimed at „saving“ the German economy.</p>
+        <p>With the electroacoustic piece „wir“, I attempt to artistically capture my perception of following the current political news cycle. Methodologically, I processed speeches and interviews by Friedrich Merz using granular synthesis. Through the continuous automation and manual tweaking of the synthesis parameters, the spoken material is relentlessly sliced and broken down into microacoustic particles. Although the concrete semantics shatter during this process, the harsh, demanding cadence of the rhetoric unmistakably remains as a sonic residue. At the same time, isolated political buzzwords repeatedly flash through the acoustic noise. This aesthetic reflects the mechanics of our contemporary media consumption: Much like the fleeting skimming of headlines, messages become ingrained solely through their constant repetition.</p>
     </section>
 
-    <!-- 05_film_projects_as_production_sound -->
-    <!-- (Hinweis: Du hattest zweimal die 05 in deiner Liste, ich habe das exakt so übernommen) -->
     <section>
-        <h2>./05_film_projects_as_production_sound</h2>
-
-        <h3>DOKUMENTAR</h3>
-        <ul>
-            <li>LICHTER DER STRASSE / Anna Friedrich / Rosenpictures / 2024 / 86’ / DOK Leipzig & Achtung Berlin / 14 Drehtage</li>
-            <li>EINMAL RAUBKUNST UND ZURÜCK / Frank Vorpahl / ZDF / 2023 / 45’ / 18 Drehtage</li>
-        </ul>
-
+        <h2>./05/film_projects_as_production_sound</h2>
+        <h3>DOCUMENTARY</h3>
+        <div class="media-container"><iframe src="https://www.youtube.com/embed/55sKh_Z-W2s" allowfullscreen></iframe></div>
+        <p class="film-title">LICHTER DER STRASSE / Anna Friedrich / Rosen Pictures / 2024 / 86’ / DOK Leipzig & Achtung Berlin / 14 shooting days</p>
+        <p>In her search for female vagabonds, the director encounters a traveling craftswoman, a van-dweller, and a group of Yenish women. Through poetic texts and imagery, she outlines a new feminist concept of freedom that stands in stark contrast to the neatly ordered German landscapes.</p>
+        <br>
+        <p class="film-title">EINMAL RAUBKUNST UND ZURÜCK / Frank Vorpahl / ZDF / 2023 / 45’ / 18 shooting days</p>
+        <p style="text-align: left;"><a href="https://www.zdf.de/dokus/einmal-raubkunst-und-zurueck-movie-100" target="_blank">https://www.zdf.de/dokus/einmal-raubkunst-und-zurueck-movie-100</a></p>
+        <p>The documentary sheds light on the far-reaching and often tragic legacy of looted art, exploring the arduous battles for restitution. It compellingly weaves together three distinct narratives: the Nso people's ongoing struggle to reclaim their sacred Ngonso statue, the Sámi community's reckoning with their history of cultural oppression in Finland, and the search for Friedrich Schiller's lost diaries in Krakow.</p>
         <h3>FICTIONAL</h3>
         <ul>
-            <li>Silvesternacht / 2026 / Yannick Entremont / Filmuniversität Babelsberg KONRAD WOLF / 3’ / 1 Drehtag</li>
-            <li>ΣΤΑ ΠΑΛΑΤΙΑ ΜΑΣ / Leonie Englert / 2025 / 5’ / 1 Drehtag</li>
+            <li>SILVESTERNACHT / 2026 / Janick Entremont / Filmuniversität Babelsberg KONRAD WOLF / 3’ / 1 shooting day</li>
+            <li>20:15 / 2026 / Daria Modin / Filmuniversität Babelsberg KONRAD WOLF / 3’ / 1 shooting day</li>
+            <li>WAS SITZT DU HIER NOCH / 2026 / Hadi Merhi / Filmuniversität Babelsberg KONRAD WOLF / 4’ / 1 shooting day</li>
+            <li>HINTERTÜR / 2026 / Daryna Snizhko / Filmuniversität Babelsberg KONRAD WOLF / 3’ / 1 shooting day</li>
+            <li>ΣΤΑ ΠΑΛΑΤΙΑ ΜΑΣ / Leonie Englert / 2025 / 5’ / 1 shooting day</li>
         </ul>
+    </section>
+
+    <section>
+        <h2>./06/list_of_works</h2>
+        <div class="work-list-item"><span class="work-list-title">unauthored</span><br>interactive sound art installation<br>documented via MP4, H.264, 4K, 16:9, 25 fps, AAC, 320 kbit/s, 48kHz, Stereo, 4’52’’, Year: 2026</div>
+        <div class="work-list-item"><span class="work-list-title">the trap fauna</span><br>sound art installation<br>documented via MP4, H.264, 1080p, 16:9, 25 fps, AAC, 320 kbit/s, 48kHz, Stereo, 1’25’’, Year: 2025</div>
+        <div class="work-list-item"><span class="work-list-title">sick summer</span><br>music video<br>MP4, H.264, 1080p, 16:9, AAC, 320 kbit/s, 48kHz, Stereo, 2’45’’, Year: 2023</div>
+        <div class="work-list-item"><span class="work-list-title">asche</span><br>music piece<br>MP3, 320 kbit/s, 48kHz, Stereo, 2’10’’, Year: 2025</div>
+        <div class="work-list-item"><span class="work-list-title">100 000</span><br>music piece<br>MP3, 320 kbit/s, 48kHz, Stereo, 3’06’’, Year: 2025</div>
+        <div class="work-list-item"><span class="work-list-title">bin wie eine elfbar</span><br>music piece<br>MP3, 320 kbit/s, 48kHz, Stereo, 2’11’’, Year: 2025</div>
+        <div class="work-list-item"><span class="work-list-title">wir</span><br>experimental sound piece<br>MP3, 320 kbit/s, 48kHz, Stereo, 3’43’’, Year: 2026</div>
     </section>
 
 </body>
